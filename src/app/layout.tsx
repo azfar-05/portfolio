@@ -4,6 +4,7 @@ import './globals.css'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 import { SmoothScrollProvider } from '@/components/providers/SmoothScrollProvider'
+import { Analytics } from '@vercel/analytics/next'
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -39,6 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main>{children}</main>
           <Footer />
         </SmoothScrollProvider>
+        <Analytics />
       </body>
     </html>
   )
