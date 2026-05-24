@@ -32,7 +32,7 @@ export function Navbar() {
         {/* Wordmark */}
         <a
           href="#"
-          className="font-mono text-[11px] tracking-[0.18em] text-chalk/60 uppercase hover:text-chalk transition-colors duration-200"
+          className="font-mono text-[11px] tracking-[0.18em] text-chalk/80 uppercase hover:text-chalk transition-colors duration-200"
         >
           AZFAR
         </a>
@@ -50,10 +50,12 @@ export function Navbar() {
           ))}
 
           <a
-            href="mailto:azfarhameed2005@gmail.com"
+            href="https://github.com/azfar-05"
+            target="_blank"
+            rel="noopener noreferrer"
             className="font-mono text-[10px] tracking-[0.14em] text-slate hover:text-chalk uppercase transition-colors duration-200 border border-white/[0.07] hover:border-white/[0.16] px-3 py-1.5 rounded-sm"
           >
-            CV&nbsp;↗
+            GitHub&nbsp;↗
           </a>
         </div>
       </nav>

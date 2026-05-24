@@ -7,59 +7,63 @@ import { cn } from '@/lib/utils'
 
 const EASE = [0.25, 0.46, 0.45, 0.94] as const
 
-/* ─── Terminal animation inside the featured card ─────────────── */
+/* ─── Terminal — CauseTrace causal chain output ────────────────── */
 function TerminalBlock() {
   return (
     <div className="rounded border border-white/[0.06] bg-panel p-5 font-mono text-[11px] leading-[1.65]">
-      {/* Window chrome */}
       <div className="mb-4 flex items-center gap-1.5">
         <div className="h-2 w-2 rounded-full bg-white/[0.08]" />
         <div className="h-2 w-2 rounded-full bg-white/[0.08]" />
         <div className="h-2 w-2 rounded-full bg-white/[0.08]" />
-        <span className="ml-2 text-[10px] text-ghost">nexus triage ––run CI-2847</span>
+        <span className="ml-2 text-[10px] text-ghost">causetrace run ./build-failure-0521</span>
       </div>
 
-      {/* Output lines */}
-      <div className="space-y-1 text-slate">
+      <div className="space-y-1.5 text-slate">
         <div>
           <span className="text-signal/50">›</span>
-          {' '}Ingesting 312 commits across 4 services
+          {' '}Parsing 847 log lines
         </div>
 
-        {/* Progress bar */}
         <div className="flex items-center gap-2">
           <span className="text-signal/50">›</span>
-          <div className="h-1 flex-1 rounded-sm bg-ghost overflow-hidden">
+          <div className="h-px flex-1 overflow-hidden bg-ghost">
             <motion.div
-              className="h-full rounded-sm bg-signal/35"
+              className="h-full bg-signal/40"
               initial={{ width: '0%' }}
-              animate={{ width: '78%' }}
-              transition={{ duration: 2.2, delay: 0.8, ease: 'easeOut' }}
+              animate={{ width: '100%' }}
+              transition={{ duration: 1.6, delay: 0.7, ease: 'easeOut' }}
             />
           </div>
-          <span className="text-ghost">78%</span>
         </div>
 
-        {/* Results */}
-        <div className="pt-1.5 space-y-0.5">
-          <div className="flex justify-between">
-            <span className="text-ghost">Candidates identified</span>
-            <span className="text-silver/60">3</span>
+        {/* Causal chain */}
+        <div className="pt-2">
+          <div className="mb-2 text-[9px] uppercase tracking-[0.18em] text-ghost">
+            Causal chain
           </div>
-          <div className="flex justify-between">
-            <span className="text-ghost">Root cause confidence</span>
-            <span className="text-signal/70">94.2%</span>
+          <div className="space-y-0.5">
+            <div className="flex justify-between text-chalk/35">
+              <span>[1] test/auth_test.go:142</span>
+              <span className="text-ghost">AssertionError</span>
+            </div>
+            <div className="flex justify-between pl-4 text-chalk/50">
+              <span>↳ auth/session.go:89</span>
+              <span className="text-ghost">nil deref</span>
+            </div>
+            <div className="flex justify-between pl-8 text-chalk/70">
+              <span>↳ db/conn.go:34</span>
+              <span className="text-signal/65">likely origin</span>
+            </div>
           </div>
         </div>
 
-        {/* Finding */}
-        <div className="pt-2 border-t border-white/[0.05]">
-          <div className="text-chalk/45">
-            <span className="text-[#4ade80]/50">✓</span>
-            {' '}auth/middleware.py L247 — race condition
+        <div className="border-t border-white/[0.05] pt-2">
+          <div className="flex justify-between">
+            <span className="text-ghost">Introduced</span>
+            <span className="text-chalk/40">a8f3c1 · 3 commits ago</span>
           </div>
-          <div className="mt-0.5 pl-3.5 text-[10px] text-ghost">
-            Introduced: a9b3c1 &nbsp;·&nbsp; Impacted: 8 / 12 runs
+          <div className="mt-0.5 text-[9px] text-ghost">
+            status — investigating
           </div>
         </div>
       </div>
@@ -80,10 +84,9 @@ function FeaturedCard({ project }: { project: Project }) {
       transition={{ duration: 0.85, ease: EASE }}
       className="mb-16 rounded border border-white/[0.06] bg-panel/40 p-8 md:p-10"
     >
-      {/* Card header */}
       <div className="mb-7 flex items-start justify-between gap-4">
         <div>
-          <span className="font-mono text-[10px] tracking-[0.22em] text-signal/70 uppercase">
+          <span className="font-mono text-[10px] tracking-[0.22em] text-signal uppercase">
             Featured Project
           </span>
           <h3 className="mt-2 text-[clamp(1.8rem,3.5vw,3rem)] font-bold tracking-[-0.025em] text-chalk">
@@ -91,27 +94,34 @@ function FeaturedCard({ project }: { project: Project }) {
           </h3>
           <p className="mt-1 text-[13px] text-silver/70">{project.tagline}</p>
         </div>
-        <a
-          href={project.github}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-1 shrink-0 font-mono text-[10px] tracking-[0.15em] text-slate hover:text-chalk uppercase transition-colors duration-200"
-        >
-          {project.year}&nbsp;↗
-        </a>
+
+        {/* Year + link or status badge */}
+        {project.github ? (
+          <a
+            href={project.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-1 shrink-0 font-mono text-[10px] tracking-[0.15em] text-slate hover:text-chalk uppercase transition-colors duration-200"
+          >
+            {project.year}&nbsp;↗
+          </a>
+        ) : (
+          <span className="mt-1 shrink-0 rounded-sm border border-white/[0.05] px-2.5 py-1 font-mono text-[9px] tracking-wider text-ghost uppercase">
+            {project.status ?? project.year}
+          </span>
+        )}
       </div>
 
-      {/* Two-column: description + terminal */}
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_1.15fr]">
         <div>
-          <p className="text-[13.5px] leading-[1.8] text-silver/70 mb-6">
+          <p className="mb-6 text-[14px] leading-[1.8] text-silver">
             {project.description}
           </p>
           <div className="flex flex-wrap gap-2">
             {project.tech.map((t) => (
               <span
                 key={t}
-                className="font-mono text-[10px] tracking-wider text-slate border border-white/[0.06] px-2.5 py-1 rounded-sm"
+                className="rounded-sm border border-white/[0.06] px-2.5 py-1 font-mono text-[10px] tracking-wider text-slate"
               >
                 {t}
               </span>
@@ -125,87 +135,101 @@ function FeaturedCard({ project }: { project: Project }) {
   )
 }
 
-/* ─── Single project row ───────────────────────────────────────── */
+/* ─── Secondary project row ────────────────────────────────────── */
 function ProjectRow({ project, index }: { project: Project; index: number }) {
   const [hovered, setHovered] = useState(false)
   const ref    = useRef<HTMLDivElement>(null)
   const inView = useInView(ref, { once: true, margin: '-4% 0px' })
 
+  const inner = (
+    <div
+      className="grid grid-cols-[auto_1fr_auto] items-center gap-6 py-6 md:gap-10"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      {/* Index */}
+      <span
+        className={cn(
+          'font-mono text-[11px] tracking-wider transition-colors duration-300 w-6',
+          hovered ? 'text-signal' : 'text-slate'
+        )}
+      >
+        {project.id}
+      </span>
+
+      {/* Name + tagline */}
+      <div>
+        <span
+          className={cn(
+            'block text-[15px] font-semibold tracking-[-0.01em] transition-colors duration-200',
+            hovered ? 'text-chalk' : 'text-chalk/85'
+          )}
+        >
+          {project.name}
+        </span>
+        <span
+          className={cn(
+            'mt-0.5 block text-[12px] transition-colors duration-200',
+            hovered ? 'text-silver' : 'text-slate'
+          )}
+        >
+          {project.tagline}
+        </span>
+      </div>
+
+      {/* Right: primary tech + status + year */}
+      <div className="flex items-center gap-4">
+        {/* Primary tech — always visible, subtly */}
+        <div className="hidden gap-2 md:flex">
+          {project.tech.slice(0, 2).map((t) => (
+            <span
+              key={t}
+              className={cn(
+                'rounded-sm border px-2 py-0.5 font-mono text-[9px] tracking-wider transition-colors duration-200',
+                hovered ? 'border-white/[0.07] text-slate' : 'border-white/[0.03] text-ghost'
+              )}
+            >
+              {t}
+            </span>
+          ))}
+        </div>
+
+        {/* Status badge */}
+        {project.status && (
+          <span className="hidden rounded-sm border border-white/[0.04] px-2 py-0.5 font-mono text-[9px] tracking-wider text-ghost md:block">
+            {project.status}
+          </span>
+        )}
+
+        {/* Year + arrow */}
+        <span
+          className={cn(
+            'whitespace-nowrap font-mono text-[11px] transition-colors duration-200',
+            hovered ? 'text-chalk' : 'text-ghost'
+          )}
+        >
+          {project.year}
+          {project.github && ' ↗'}
+        </span>
+      </div>
+    </div>
+  )
+
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 16 }}
+      initial={{ opacity: 0, y: 14 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: index * 0.09, ease: EASE }}
       className="border-t border-white/[0.05]"
     >
-      <a
-        href={project.github}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="flex items-center justify-between py-7 group"
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
-      >
-        {/* Left: index + name + tagline */}
-        <div className="flex items-baseline gap-6 md:gap-10">
-          <span
-            className={cn(
-              'font-mono text-[11px] tracking-wider transition-colors duration-300',
-              hovered ? 'text-signal' : 'text-ghost'
-            )}
-          >
-            {project.id}
-          </span>
-
-          <div>
-            <span
-              className={cn(
-                'block text-[15px] font-semibold tracking-[-0.01em] transition-colors duration-200',
-                hovered ? 'text-chalk' : 'text-chalk/65'
-              )}
-            >
-              {project.name}
-            </span>
-            <span
-              className={cn(
-                'block text-[12px] mt-0.5 transition-colors duration-200',
-                hovered ? 'text-silver' : 'text-slate'
-              )}
-            >
-              {project.tagline}
-            </span>
-          </div>
-        </div>
-
-        {/* Right: tech tags (hover reveal) + year + arrow */}
-        <div className="flex items-center gap-5">
-          <div
-            className={cn(
-              'hidden md:flex flex-wrap gap-1.5 max-w-[260px] justify-end transition-opacity duration-200',
-              hovered ? 'opacity-100' : 'opacity-0'
-            )}
-          >
-            {project.tech.slice(0, 3).map((t) => (
-              <span
-                key={t}
-                className="font-mono text-[9px] tracking-wider text-slate border border-white/[0.05] px-2 py-0.5 rounded-sm"
-              >
-                {t}
-              </span>
-            ))}
-          </div>
-
-          <span
-            className={cn(
-              'font-mono text-[11px] transition-colors duration-200 whitespace-nowrap',
-              hovered ? 'text-chalk' : 'text-ghost'
-            )}
-          >
-            {project.year}&nbsp;↗
-          </span>
-        </div>
-      </a>
+      {project.github ? (
+        <a href={project.github} target="_blank" rel="noopener noreferrer" className="block">
+          {inner}
+        </a>
+      ) : (
+        <div>{inner}</div>
+      )}
     </motion.div>
   )
 }
@@ -226,7 +250,6 @@ export function Projects() {
     >
       <div className="mx-auto max-w-screen-xl">
 
-        {/* Section label */}
         <motion.div
           className="mb-16 flex items-center gap-3"
           initial={{ opacity: 0, x: -16 }}

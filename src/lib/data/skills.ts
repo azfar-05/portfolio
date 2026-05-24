@@ -1,6 +1,6 @@
 export const skills: Record<string, string[]> = {
-  'Core Languages':   ['Python', 'Go', 'TypeScript', 'C++', 'Rust'],
-  'ML & AI':          ['PyTorch', 'CUDA', 'Triton', 'Transformers', 'RLHF', 'vLLM'],
-  'Systems':          ['Distributed Systems', 'RAFT Consensus', 'LSM Trees', 'gRPC', 'Redis'],
-  'Infrastructure':   ['Kubernetes', 'Docker', 'PostgreSQL', 'Prometheus', 'GitHub Actions'],
+  'Building with':   ['Python', 'TypeScript', 'Next.js', 'React', 'TailwindCSS'],
+  'ML & AI':         ['scikit-learn', 'YOLOv8', 'Ultralytics', 'OpenAI API'],
+  'Data & backend':  ['PostgreSQL', 'Node.js', 'tRPC', 'Prisma', 'MySQL'],
+  'Environment':     ['Linux', 'Git', 'VS Code', 'Claude Code', 'Bash'],
 }

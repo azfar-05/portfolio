@@ -41,10 +41,10 @@ export function About() {
             <AnimatedText delay={0.07} className="text-[clamp(2.2rem,4.5vw,3.75rem)] font-bold leading-[1.0] tracking-[-0.025em] text-chalk">
               instinct.
             </AnimatedText>
-            <AnimatedText delay={0.16} className="text-[clamp(2.2rem,4.5vw,3.75rem)] font-bold leading-[1.0] tracking-[-0.025em] text-chalk/20">
+            <AnimatedText delay={0.16} className="text-[clamp(2.2rem,4.5vw,3.75rem)] font-bold leading-[1.0] tracking-[-0.025em] text-chalk/32">
               Builder by
             </AnimatedText>
-            <AnimatedText delay={0.22} className="text-[clamp(2.2rem,4.5vw,3.75rem)] font-bold leading-[1.0] tracking-[-0.025em] text-chalk/20">
+            <AnimatedText delay={0.22} className="text-[clamp(2.2rem,4.5vw,3.75rem)] font-bold leading-[1.0] tracking-[-0.025em] text-chalk/32">
               obsession.
             </AnimatedText>
           </div>
@@ -58,18 +58,20 @@ export function About() {
           >
             <div className="space-y-5 text-[15px] leading-[1.78]">
               <p className="text-silver">
-                I&apos;m Azfar — an AI/ML engineering student with a deep focus on systems that work
-                at scale, under pressure, without excuses.
+                I&apos;m Azfar — an AI/ML engineering student at NMAM Institute of Technology,
+                working toward a B.Tech in AI & Machine Learning. My focus is on AI-assisted
+                systems, developer tooling, and understanding how complex engineering workflows
+                behave under pressure.
               </p>
-              <p className="text-silver/65">
-                My work lives at the intersection of machine learning infrastructure, distributed
-                systems, and developer tooling. I&apos;m drawn to the hardest engineering problems:
-                training at scale, inference optimization, consensus algorithms, and the
-                infrastructure that makes ambitious AI systems actually possible.
+              <p className="text-silver/80">
+                I&apos;m drawn to the intersection of machine learning and systems thinking:
+                building tools that surface failure patterns, automate tedious workflows, and
+                make engineers faster. I care as much about how systems break as how
+                they&apos;re built.
               </p>
-              <p className="text-silver/40">
-                I believe great systems engineering is invisible. It just works. That standard
-                drives every decision I make.
+              <p className="text-silver/60">
+                Early in this trajectory, but building with intent. Each project is a chance
+                to go deeper into something real.
               </p>
             </div>
 

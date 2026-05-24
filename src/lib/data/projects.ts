@@ -5,41 +5,54 @@ export interface Project {
   description: string
   tech: string[]
   year: string
-  github: string
+  github?: string
   demo?: string
   featured?: boolean
+  status?: string
 }
 
 export const projects: Project[] = [
   {
     id: '01',
-    name: 'NEXUS',
-    tagline: 'AI-assisted CI failure triage',
+    name: 'CauseTrace',
+    tagline: 'Causal chain debugging for software failures',
     description:
-      'An intelligent pipeline that correlates git commits to CI/CD failures using language models and statistical analysis. Nexus pinpoints root causes across distributed build systems — surfacing the exact commit, file, and code path responsible for each failure pattern. Reduced mean time to debug by 73% in internal testing.',
-    tech: ['Python', 'TypeScript', 'OpenAI API', 'Redis', 'PostgreSQL', 'GitHub API'],
-    year: '2024',
-    github: 'https://github.com/azfar-05',
+      'A research project exploring how to trace the causal chain behind software failures. Given a failing build, CauseTrace parses logs, test output, and git history to reconstruct the sequence of contributing causes — not just what failed, but where the chain began. Exploring how language models can assist root-cause reasoning across real codebases.',
+    tech: ['Python', 'TypeScript', 'Node.js', 'PostgreSQL'],
+    year: '2025',
     featured: true,
+    status: 'In Development',
   },
   {
     id: '02',
-    name: 'STRATUM',
-    tagline: 'Distributed consensus engine',
+    name: 'Machine Failure Prediction',
+    tagline: 'Predictive maintenance with ML',
     description:
-      'A fault-tolerant distributed key-value store built from scratch implementing the RAFT consensus algorithm. Supports log compaction, dynamic cluster membership changes, and linearizable reads with full test coverage under simulated network partitions and byzantine conditions.',
-    tech: ['Go', 'RAFT', 'RocksDB', 'gRPC', 'Prometheus'],
+      'ML system predicting machine failures from operational parameters — temperature, rotational speed, torque, and tool wear — across 10,000 records covering five failure modes. Built with Streamlit for interactive exploration.',
+    tech: ['Python', 'scikit-learn', 'Streamlit'],
     year: '2024',
-    github: 'https://github.com/azfar-05',
+    github: 'https://github.com/azfar-05/machine-failure-prediction',
   },
   {
     id: '03',
-    name: 'MERIDIAN',
-    tagline: 'High-throughput ML inference',
+    name: 'Vehicle & Pedestrian Detection',
+    tagline: 'Real-time CV with YOLOv8',
     description:
-      'Inference serving infrastructure purpose-built for large language models. Implements continuous batching, tensor parallelism, and KV cache management to maximize GPU utilization. Achieves 4× throughput improvement over naive serving with sub-100ms p99 latency.',
-    tech: ['Python', 'CUDA', 'Triton', 'FastAPI', 'vLLM'],
-    year: '2024',
-    github: 'https://github.com/azfar-05',
+      'Real-time detection pipeline with confidence scoring, object counting, and FPS monitoring. Supports webcam and video stream input with processed output saving.',
+    tech: ['Python', 'OpenCV', 'YOLOv8', 'Ultralytics'],
+    year: '2025',
+    github: 'https://github.com/azfar-05/real-time-vehicle-pedestrian-detection',
+    status: 'In Progress',
+  },
+  {
+    id: '04',
+    name: 'Kisan Setu',
+    tagline: 'Voice-first agricultural marketplace',
+    description:
+      'Hackathon project enabling farmers to list and sell crops via IVR calls — no smartphone or digital literacy required. Integrates live mandi pricing, multilingual voice interfaces, and direct buyer connections.',
+    tech: ['Next.js', 'TypeScript', 'tRPC', 'PostgreSQL', 'VAPI', 'n8n'],
+    year: '2025',
+    github: 'https://github.com/azfar-05/kisan-setu',
+    status: 'Hackathon',
   },
 ]

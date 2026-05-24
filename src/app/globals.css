@@ -9,9 +9,9 @@
 
   /* Text */
   --color-chalk:  #f0f0ee;
-  --color-silver: #888888;
-  --color-slate:  #4a4a4a;
-  --color-ghost:  #2a2a2a;
+  --color-silver: #a6a6a4;
+  --color-slate:  #6c6c6a;
+  --color-ghost:  #565654;
 
   /* Accent */
   --color-signal: #4a7cf7;
@@ -49,11 +49,6 @@ body {
   color: var(--color-chalk);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  cursor: none;
-}
-
-@media (pointer: coarse) {
-  body { cursor: auto; }
 }
 
 /* Animated film-grain overlay */

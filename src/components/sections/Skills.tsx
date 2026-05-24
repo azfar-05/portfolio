@@ -18,7 +18,6 @@ export function Skills() {
     >
       <div className="mx-auto max-w-screen-xl">
 
-        {/* Section label */}
         <motion.div
           className="mb-16 flex items-center gap-3"
           initial={{ opacity: 0, x: -16 }}
@@ -26,35 +25,44 @@ export function Skills() {
           transition={{ duration: 0.6, ease: EASE }}
         >
           <span className="font-mono text-[10px] tracking-[0.22em] text-slate uppercase">
-            05 / Capabilities
+            05 / Stack
           </span>
           <div className="h-px flex-1 bg-white/[0.04]" />
         </motion.div>
 
-        {/* Capability grid */}
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
+        {/* Framing statement */}
+        <motion.p
+          className="mb-14 max-w-lg text-[14px] leading-[1.78] text-silver/65"
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.7, delay: 0.08, ease: EASE }}
+        >
+          Primarily working in Python and TypeScript. Building full-stack with Next.js,
+          exploring ML tooling through project work, and leaning into AI-assisted
+          development workflows.
+        </motion.p>
+
+        {/* Editorial stack rows */}
+        <div className="space-y-0">
           {categories.map(([category, items], i) => (
             <motion.div
               key={category}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.65, delay: i * 0.08, ease: EASE }}
+              transition={{ duration: 0.55, delay: 0.12 + i * 0.07, ease: EASE }}
+              className="grid grid-cols-1 items-baseline gap-4 border-t border-white/[0.04] py-6 md:grid-cols-[160px_1fr] md:gap-12"
             >
-              <span className="font-mono text-[10px] tracking-[0.2em] text-slate uppercase block mb-5">
+              <span className="font-mono text-[10px] tracking-[0.2em] text-slate uppercase">
                 {category}
               </span>
 
-              <ul className="space-y-2.5">
+              <div className="flex flex-wrap gap-x-7 gap-y-2">
                 {items.map((skill) => (
-                  <li
-                    key={skill}
-                    className="flex items-center gap-2.5 text-[13px] text-silver/65"
-                  >
-                    <span className="h-px w-3 shrink-0 bg-ghost" />
+                  <span key={skill} className="text-[14px] text-silver">
                     {skill}
-                  </li>
+                  </span>
                 ))}
-              </ul>
+              </div>
             </motion.div>
           ))}
         </div>

@@ -5,7 +5,7 @@ export function Footer() {
     <footer className="border-t border-white/[0.04] px-6 py-8 md:px-10 lg:px-16">
       <div className="mx-auto flex max-w-screen-xl items-center justify-between">
         <span className="font-mono text-[10px] tracking-[0.18em] text-ghost uppercase">
-          © {year} Azfar Hameed
+          © {year} Mohammad Azfar
         </span>
 
         <div className="flex items-center gap-7">

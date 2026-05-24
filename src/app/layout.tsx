@@ -4,7 +4,6 @@ import './globals.css'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 import { SmoothScrollProvider } from '@/components/providers/SmoothScrollProvider'
-import { CustomCursor } from '@/components/ui/CustomCursor'
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -17,12 +16,12 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Azfar Hameed — AI/ML Engineer',
+  title: 'Mohammad Azfar — AI/ML Engineering Student',
   description:
-    'Building AI systems that reason at scale. Focused on ML infrastructure, distributed systems, and ambitious technical problems.',
+    'Building AI-assisted systems, developer tooling, and engineering workflows. B.Tech AI & ML at NMAM Institute of Technology.',
   openGraph: {
-    title: 'Azfar Hameed — AI/ML Engineer',
-    description: 'Building AI systems that reason at scale.',
+    title: 'Mohammad Azfar — AI/ML Engineering Student',
+    description: 'Building AI-assisted systems, developer tooling, and engineering workflows.',
     type: 'website',
   },
 }
@@ -36,7 +35,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     >
       <body className="bg-canvas text-chalk font-sans antialiased">
         <SmoothScrollProvider>
-          <CustomCursor />
           <Navbar />
           <main>{children}</main>
           <Footer />

@@ -14,11 +14,10 @@ export function Contact() {
     <section
       id="contact"
       ref={ref}
-      className="border-t border-white/[0.04] px-6 py-44 md:px-10 lg:px-16"
+      className="border-t border-white/[0.04] px-6 py-36 md:px-10 lg:px-16"
     >
       <div className="mx-auto max-w-screen-xl">
 
-        {/* Section label */}
         <motion.div
           className="mb-16 flex items-center gap-3"
           initial={{ opacity: 0, x: -16 }}
@@ -31,54 +30,81 @@ export function Contact() {
           <div className="h-px flex-1 bg-white/[0.04]" />
         </motion.div>
 
-        <div className="max-w-3xl">
-          {/* Display heading */}
-          <AnimatedText className="text-[clamp(2.5rem,6vw,5.5rem)] font-bold leading-[0.97] tracking-[-0.03em] text-chalk">
-            Let&apos;s build
-          </AnimatedText>
-          <AnimatedText delay={0.1} className="text-[clamp(2.5rem,6vw,5.5rem)] font-bold leading-[0.97] tracking-[-0.03em] text-chalk/20">
-            something.
-          </AnimatedText>
+        {/* Two-column layout */}
+        <div className="grid grid-cols-1 gap-16 lg:grid-cols-[1fr_320px] lg:items-start lg:gap-24">
 
-          {/* Email link */}
+          {/* Left: closing statement */}
+          <div>
+            <AnimatedText className="text-[clamp(2.25rem,5vw,4.5rem)] font-bold leading-[1.02] tracking-[-0.03em] text-chalk">
+              Open to internships
+            </AnimatedText>
+            <AnimatedText delay={0.09} className="text-[clamp(2.25rem,5vw,4.5rem)] font-bold leading-[1.02] tracking-[-0.03em] text-chalk/32">
+              and what comes next.
+            </AnimatedText>
+
+            <motion.p
+              className="mt-10 max-w-sm text-[14px] leading-[1.78] text-silver/60"
+              initial={{ opacity: 0, y: 16 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.75, delay: 0.3, ease: EASE }}
+            >
+              Second-year B.Tech student at NMAMIT, building toward roles at the
+              intersection of ML and developer tooling.
+            </motion.p>
+          </div>
+
+          {/* Right: contact details */}
           <motion.div
-            className="mt-14"
+            className="lg:pt-2"
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.75, delay: 0.35, ease: EASE }}
+            transition={{ duration: 0.75, delay: 0.2, ease: EASE }}
           >
-            <a
-              href="mailto:azfarhameed2005@gmail.com"
-              className="group inline-flex items-center gap-2.5"
-            >
-              <span className="text-[15px] text-silver group-hover:text-chalk transition-colors duration-200">
-                azfarhameed2005@gmail.com
-              </span>
-              <span className="text-slate group-hover:text-chalk text-[15px] transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 inline-block">
-                ↗
-              </span>
-            </a>
-          </motion.div>
+            <div className="space-y-9">
 
-          {/* Social row */}
-          <motion.div
-            className="mt-8 flex items-center gap-8"
-            initial={{ opacity: 0 }}
-            animate={inView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.75, delay: 0.5, ease: EASE }}
-          >
-            <a
-              href="https://github.com/azfar-05"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-mono text-[10px] tracking-[0.2em] text-ghost hover:text-silver uppercase transition-colors duration-200"
-            >
-              GitHub ↗
-            </a>
-            <div className="h-3 w-px bg-ghost/40" />
-            <span className="font-mono text-[10px] tracking-[0.2em] text-ghost uppercase">
-              Based Anywhere
-            </span>
+              {/* Email */}
+              <div>
+                <span className="mb-2.5 block font-mono text-[9px] tracking-[0.22em] text-ghost uppercase">
+                  Email
+                </span>
+                <a
+                  href="mailto:azfarhameed2005@gmail.com"
+                  className="group inline-flex items-center gap-2"
+                >
+                  <span className="text-[14px] text-silver transition-colors duration-200 group-hover:text-chalk">
+                    azfarhameed2005@gmail.com
+                  </span>
+                  <span className="inline-block text-slate transition-all duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-chalk">
+                    ↗
+                  </span>
+                </a>
+              </div>
+
+              {/* Profiles */}
+              <div>
+                <span className="mb-3 block font-mono text-[9px] tracking-[0.22em] text-ghost uppercase">
+                  Profiles
+                </span>
+                <div className="space-y-3">
+                  <a
+                    href="https://github.com/azfar-05"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block font-mono text-[10px] tracking-[0.18em] text-slate uppercase transition-colors duration-200 hover:text-silver"
+                  >
+                    GitHub ↗
+                  </a>
+                  <a
+                    href="https://linkedin.com/in/azfar05"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block font-mono text-[10px] tracking-[0.18em] text-slate uppercase transition-colors duration-200 hover:text-silver"
+                  >
+                    LinkedIn ↗
+                  </a>
+                </div>
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>
