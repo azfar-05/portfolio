@@ -2,13 +2,13 @@
 
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { AnimatedText } from '@/components/ui/AnimatedText'
+import { GithubActivity } from '@/components/ui/GithubActivity'
 
 const EASE = [0.25, 0.46, 0.45, 0.94] as const
 
 export function About() {
-  const ref     = useRef<HTMLElement>(null)
-  const inView  = useInView(ref, { once: true, margin: '-12% 0px' })
+  const ref    = useRef<HTMLElement>(null)
+  const inView = useInView(ref, { once: true, margin: '-12% 0px' })
 
   return (
     <section
@@ -26,59 +26,73 @@ export function About() {
           transition={{ duration: 0.6, ease: EASE }}
         >
           <span className="font-mono text-[10px] tracking-[0.22em] text-slate uppercase">
-            02 / About
+            03 / About
           </span>
           <div className="h-px flex-1 bg-white/[0.04]" />
         </motion.div>
 
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-[1fr_1.5fr] lg:gap-28">
 
-          {/* Left — display headline */}
-          <div>
-            <AnimatedText className="text-[clamp(2.2rem,4.5vw,3.75rem)] font-bold leading-[1.0] tracking-[-0.025em] text-chalk">
-              Engineer by
-            </AnimatedText>
-            <AnimatedText delay={0.07} className="text-[clamp(2.2rem,4.5vw,3.75rem)] font-bold leading-[1.0] tracking-[-0.025em] text-chalk">
-              instinct.
-            </AnimatedText>
-            <AnimatedText delay={0.16} className="text-[clamp(2.2rem,4.5vw,3.75rem)] font-bold leading-[1.0] tracking-[-0.025em] text-chalk/32">
-              Builder by
-            </AnimatedText>
-            <AnimatedText delay={0.22} className="text-[clamp(2.2rem,4.5vw,3.75rem)] font-bold leading-[1.0] tracking-[-0.025em] text-chalk/32">
-              obsession.
-            </AnimatedText>
-          </div>
-
-          {/* Right — body copy */}
+          {/* Left — education */}
           <motion.div
-            className="lg:pt-14"
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7, delay: 0.1, ease: EASE }}
+          >
+            <span className="mb-6 block font-mono text-[10px] tracking-[0.2em] text-slate uppercase">
+              Education
+            </span>
+
+            <h3 className="text-[15px] font-semibold tracking-[-0.01em] text-chalk">
+              B.Tech, Artificial Intelligence &amp; Machine Learning
+            </h3>
+            <p className="mt-1.5 text-[14px] text-silver">
+              NMAM Institute of Technology
+            </p>
+
+            <dl className="mt-7 max-w-xs">
+              <div className="flex items-baseline justify-between border-t border-white/[0.05] py-2.5">
+                <dt className="font-mono text-[9px] tracking-[0.2em] text-ghost uppercase">Period</dt>
+                <dd className="font-mono text-[11px] text-silver/80">2024 — 2028</dd>
+              </div>
+              <div className="flex items-baseline justify-between border-t border-white/[0.05] py-2.5">
+                <dt className="font-mono text-[9px] tracking-[0.2em] text-ghost uppercase">CGPA</dt>
+                <dd className="font-mono text-[11px] text-silver/80">9.70 / 10</dd>
+              </div>
+            </dl>
+          </motion.div>
+
+          {/* Right — bio */}
+          <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.9, delay: 0.2, ease: EASE }}
           >
-            <div className="space-y-5 text-[15px] leading-[1.78]">
+            <div className="space-y-5 text-[15px] leading-[1.82]">
               <p className="text-silver">
-                I&apos;m Azfar — an AI/ML engineering student at NMAM Institute of Technology,
-                working toward a B.Tech in AI & Machine Learning. My focus is on AI-assisted
-                systems, developer tooling, and understanding how complex engineering workflows
-                behave under pressure.
+                I&apos;m Mohammad Azfar — a B.Tech student in AI &amp; Machine
+                Learning at NMAM Institute of Technology, two years in. My
+                projects keep orbiting one question: what does it take to
+                understand why software fails?
               </p>
               <p className="text-silver/80">
-                I&apos;m drawn to the intersection of machine learning and systems thinking:
-                building tools that surface failure patterns, automate tedious workflows, and
-                make engineers faster. I care as much about how systems break as how
-                they&apos;re built.
+                That thread runs from CauseTrace&apos;s deterministic commit
+                ranking, to SEFI&apos;s pipeline failure analytics, to ML models
+                that predict machine breakdowns before they happen. Along the
+                way I shipped real software for a real client — and learned
+                that the unglamorous parts, the schemas and migrations and
+                admin tooling, are where systems earn trust.
               </p>
               <p className="text-silver/60">
-                Early in this trajectory, but building with intent. Each project is a chance
-                to go deeper into something real.
+                Currently digging into retrieval-augmented generation and the
+                widening space where LLM reasoning meets engineering workflows.
               </p>
             </div>
 
             <div className="mt-10 flex items-center gap-7">
               <a
                 href="#contact"
-                className="font-mono text-[11px] tracking-[0.15em] text-chalk border border-white/[0.10] hover:border-white/[0.22] px-5 py-2.5 rounded-sm uppercase transition-colors duration-200"
+                className="rounded-sm border border-white/[0.10] px-5 py-2.5 font-mono text-[11px] tracking-[0.15em] text-chalk uppercase transition-colors duration-200 hover:border-white/[0.25]"
               >
                 Get in touch
               </a>
@@ -86,12 +100,17 @@ export function About() {
                 href="https://github.com/azfar-05"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-mono text-[11px] tracking-[0.15em] text-slate hover:text-silver uppercase transition-colors duration-200"
+                className="font-mono text-[11px] tracking-[0.15em] text-slate uppercase transition-colors duration-200 hover:text-silver"
               >
                 GitHub ↗
               </a>
             </div>
           </motion.div>
+        </div>
+
+        {/* Activity strip */}
+        <div className="mt-24">
+          <GithubActivity />
         </div>
       </div>
     </section>

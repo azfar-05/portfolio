@@ -25,7 +25,7 @@ export function Skills() {
           transition={{ duration: 0.6, ease: EASE }}
         >
           <span className="font-mono text-[10px] tracking-[0.22em] text-slate uppercase">
-            05 / Stack
+            04 / Stack
           </span>
           <div className="h-px flex-1 bg-white/[0.04]" />
         </motion.div>
@@ -37,9 +37,9 @@ export function Skills() {
           animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 0.7, delay: 0.08, ease: EASE }}
         >
-          Primarily working in Python and TypeScript. Building full-stack with Next.js,
-          exploring ML tooling through project work, and leaning into AI-assisted
-          development workflows.
+          Python and TypeScript are home. The rest is in service of the work —
+          git internals and CI pipelines for failure tooling, SQL for the
+          analytical layers, ML libraries for the predictive ones.
         </motion.p>
 
         {/* Editorial stack rows */}

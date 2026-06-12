@@ -19,10 +19,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: 'Mohammad Azfar — AI/ML Engineering Student',
   description:
-    'Building AI-assisted systems, developer tooling, and engineering workflows. B.Tech AI & ML at NMAM Institute of Technology.',
+    'Building tools that investigate software failures — root-cause analysis, CI/CD intelligence, and explainable systems. B.Tech AI & ML at NMAM Institute of Technology.',
   openGraph: {
     title: 'Mohammad Azfar — AI/ML Engineering Student',
-    description: 'Building AI-assisted systems, developer tooling, and engineering workflows.',
+    description:
+      'Building tools that investigate software failures — root-cause analysis, CI/CD intelligence, and explainable systems.',
     type: 'website',
   },
 }

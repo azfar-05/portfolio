@@ -6,6 +6,27 @@ import { AnimatedText } from '@/components/ui/AnimatedText'
 
 const EASE = [0.25, 0.46, 0.45, 0.94] as const
 
+const CHANNELS = [
+  {
+    label: 'Email',
+    value: 'azfarhameed2005@gmail.com',
+    href: 'mailto:azfarhameed2005@gmail.com',
+    external: false,
+  },
+  {
+    label: 'GitHub',
+    value: 'azfar-05',
+    href: 'https://github.com/azfar-05',
+    external: true,
+  },
+  {
+    label: 'LinkedIn',
+    value: 'azfar05',
+    href: 'https://linkedin.com/in/azfar05',
+    external: true,
+  },
+]
+
 export function Contact() {
   const ref    = useRef<HTMLElement>(null)
   const inView = useInView(ref, { once: true, margin: '-10% 0px' })
@@ -25,7 +46,7 @@ export function Contact() {
           transition={{ duration: 0.6, ease: EASE }}
         >
           <span className="font-mono text-[10px] tracking-[0.22em] text-slate uppercase">
-            06 / Contact
+            05 / Contact
           </span>
           <div className="h-px flex-1 bg-white/[0.04]" />
         </motion.div>
@@ -53,57 +74,34 @@ export function Contact() {
             </motion.p>
           </div>
 
-          {/* Right: contact details */}
+          {/* Right: three channels, equal weight */}
           <motion.div
             className="lg:pt-2"
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.75, delay: 0.2, ease: EASE }}
           >
-            <div className="space-y-9">
-
-              {/* Email */}
-              <div>
-                <span className="mb-2.5 block font-mono text-[9px] tracking-[0.22em] text-ghost uppercase">
-                  Email
-                </span>
+            <div>
+              {CHANNELS.map((c) => (
                 <a
-                  href="mailto:azfarhameed2005@gmail.com"
-                  className="group inline-flex items-center gap-2"
+                  key={c.label}
+                  href={c.href}
+                  {...(c.external && { target: '_blank', rel: 'noopener noreferrer' })}
+                  className="group flex items-baseline justify-between gap-6 border-t border-white/[0.06] py-5 last:border-b last:border-white/[0.06]"
                 >
-                  <span className="text-[14px] text-silver transition-colors duration-200 group-hover:text-chalk">
-                    azfarhameed2005@gmail.com
+                  <span className="font-mono text-[9px] tracking-[0.22em] text-ghost uppercase transition-colors duration-200 group-hover:text-slate">
+                    {c.label}
                   </span>
-                  <span className="inline-block text-slate transition-all duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-chalk">
-                    ↗
+                  <span className="flex items-baseline gap-2">
+                    <span className="text-[14px] text-silver transition-colors duration-200 group-hover:text-chalk">
+                      {c.value}
+                    </span>
+                    <span className="inline-block text-slate transition-all duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-chalk">
+                      ↗
+                    </span>
                   </span>
                 </a>
-              </div>
-
-              {/* Profiles */}
-              <div>
-                <span className="mb-3 block font-mono text-[9px] tracking-[0.22em] text-ghost uppercase">
-                  Profiles
-                </span>
-                <div className="space-y-3">
-                  <a
-                    href="https://github.com/azfar-05"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block font-mono text-[10px] tracking-[0.18em] text-slate uppercase transition-colors duration-200 hover:text-silver"
-                  >
-                    GitHub ↗
-                  </a>
-                  <a
-                    href="https://linkedin.com/in/azfar05"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block font-mono text-[10px] tracking-[0.18em] text-slate uppercase transition-colors duration-200 hover:text-silver"
-                  >
-                    LinkedIn ↗
-                  </a>
-                </div>
-              </div>
+              ))}
             </div>
           </motion.div>
         </div>

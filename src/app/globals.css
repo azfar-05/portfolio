@@ -2,19 +2,16 @@
 
 @theme {
   /* Background layers */
-  --color-canvas:   #080808;
-  --color-panel:    #0f0f0f;
+  --color-canvas:   #0a0a0a;
+  --color-panel:    #101010;
   --color-card:     #161616;
   --color-elevated: #1e1e1e;
 
   /* Text */
-  --color-chalk:  #f0f0ee;
-  --color-silver: #a6a6a4;
-  --color-slate:  #6c6c6a;
-  --color-ghost:  #565654;
-
-  /* Accent */
-  --color-signal: #4a7cf7;
+  --color-chalk:  #ededeb;
+  --color-silver: #a3a3a1;
+  --color-slate:  #6b6b69;
+  --color-ghost:  #525250;
 
   /* Typography */
   --font-sans: var(--font-geist-sans), system-ui, sans-serif;
@@ -60,25 +57,29 @@ body::after {
   pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='512' height='512' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 180px 180px;
-  opacity: 0.032;
+  opacity: 0.03;
   mix-blend-mode: overlay;
   animation: grain 8s steps(10) infinite;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  body::after { animation: none; }
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar        { width: 3px; }
-::-webkit-scrollbar-track  { background: #080808; }
+::-webkit-scrollbar-track  { background: #0a0a0a; }
 ::-webkit-scrollbar-thumb  { background: rgba(255,255,255,0.08); border-radius: 2px; }
 
 /* Selection */
 ::selection {
-  background: rgba(74, 124, 247, 0.18);
-  color: #f0f0ee;
+  background: rgba(237, 237, 235, 0.92);
+  color: #0a0a0a;
 }
 
 /* Focus */
 :focus-visible {
-  outline: 1px solid rgba(74, 124, 247, 0.5);
+  outline: 1px solid rgba(237, 237, 235, 0.45);
   outline-offset: 4px;
   border-radius: 2px;
 }

@@ -4,8 +4,8 @@ import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 
 const EASE = [0.25, 0.46, 0.45, 0.94] as const
-const BASE  = 0.4
-const GAP   = 0.08
+const BASE = 0.4
+const GAP  = 0.08
 
 function ClipReveal({
   children,
@@ -42,23 +42,18 @@ export function Hero() {
       ref={containerRef}
       className="relative flex h-screen flex-col overflow-hidden bg-canvas px-6 md:px-10 lg:px-16"
     >
-      {/* Ambient glow */}
-      <div
-        className="pointer-events-none absolute right-0 top-0 h-[70vh] w-[55vw]"
-        aria-hidden
-      >
-        <div className="absolute right-[-15%] top-[-15%] h-full w-full rounded-full bg-signal opacity-[0.04] blur-[140px]" />
-      </div>
-
       {/* Document marker */}
       <motion.div
-        className="relative z-10 pt-[5.5rem]"
+        className="relative z-10 flex items-baseline justify-between pt-[5.5rem]"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.0, delay: 1.4 }}
       >
         <span className="font-mono text-[10px] tracking-[0.22em] text-ghost uppercase">
           Portfolio&nbsp;/&nbsp;2026
+        </span>
+        <span className="hidden font-mono text-[10px] tracking-[0.22em] text-ghost uppercase md:block">
+          B.Tech AI/ML ’28
         </span>
       </motion.div>
 
@@ -86,13 +81,13 @@ export function Hero() {
           {/* Left: name */}
           <div>
             <ClipReveal delay={BASE + GAP}>
-              <h1 className="text-[clamp(4.5rem,12.5vw,16rem)] font-bold leading-[0.86] tracking-[-0.03em] text-chalk">
+              <h1 className="text-[clamp(3.5rem,12.5vw,16rem)] font-bold leading-[0.86] tracking-[-0.03em] text-chalk">
                 Mohammad
               </h1>
             </ClipReveal>
 
             <ClipReveal delay={BASE + GAP * 2}>
-              <h1 className="text-[clamp(4.5rem,12.5vw,16rem)] font-bold leading-[0.86] tracking-[-0.03em] text-chalk/25">
+              <h1 className="text-[clamp(3.5rem,12.5vw,16rem)] font-bold leading-[0.86] tracking-[-0.03em] text-chalk/25">
                 Azfar
               </h1>
             </ClipReveal>
@@ -106,8 +101,8 @@ export function Hero() {
             transition={{ duration: 0.8, delay: BASE + GAP * 4, ease: EASE }}
           >
             <p className="max-w-sm text-[15px] leading-[1.78] text-silver">
-              Building AI-assisted tools and systems — focused on
-              debugging, engineering workflows, and intelligent automation.
+              I build tools that investigate software failures — tracing broken
+              builds and regressions back to the commits that caused them.
             </p>
           </motion.div>
         </div>

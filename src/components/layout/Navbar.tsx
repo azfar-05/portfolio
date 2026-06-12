@@ -38,7 +38,7 @@ export function Navbar() {
         </a>
 
         {/* Links */}
-        <div className="flex items-center gap-7 md:gap-9">
+        <div className="flex items-center gap-5 md:gap-9">
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}
@@ -53,7 +53,7 @@ export function Navbar() {
             href="https://github.com/azfar-05"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-mono text-[10px] tracking-[0.14em] text-slate hover:text-chalk uppercase transition-colors duration-200 border border-white/[0.07] hover:border-white/[0.16] px-3 py-1.5 rounded-sm"
+            className="hidden font-mono text-[10px] tracking-[0.14em] text-slate hover:text-chalk uppercase transition-colors duration-200 border border-white/[0.07] hover:border-white/[0.16] px-3 py-1.5 rounded-sm sm:block"
           >
             GitHub&nbsp;↗
           </a>

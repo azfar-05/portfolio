@@ -18,6 +18,14 @@ export function Footer() {
             GitHub ↗
           </a>
           <a
+            href="https://linkedin.com/in/azfar05"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-mono text-[10px] tracking-[0.18em] text-ghost hover:text-silver uppercase transition-colors duration-200"
+          >
+            LinkedIn ↗
+          </a>
+          <a
             href="mailto:azfarhameed2005@gmail.com"
             className="font-mono text-[10px] tracking-[0.18em] text-ghost hover:text-silver uppercase transition-colors duration-200"
           >

@@ -10,7 +10,6 @@ Personal portfolio website built with Next.js, focused on systems-oriented desig
 - TypeScript
 - TailwindCSS
 - Framer Motion
-- GSAP
 - Lenis
 - React
 
@@ -37,8 +36,8 @@ The goal was to create something that feels:
 ## Local Development
 
 ```bash
-pnpm install
-pnpm dev
+npm install
+npm run dev
 ```
 
 Then open:
